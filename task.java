@@ -1,4 +1,4 @@
-// ???task??
+// 不改变task顺序
 public static String taskSchedule(char[] tasks, int cd) {
     StringBuilder sb = new StringBuilder();
     int cp = cd; int i = 0;
@@ -27,7 +27,7 @@ public static String taskSchedule(char[] tasks, int cd) {
     return sb.toString();
 }
 
-//??task??
+//改变task顺序
 public static String taskSchedule(char[] tasks, int cd) {
         Map<Character, Integer> map = new HashMap<>();
         StringBuilder sb = new StringBuilder();
