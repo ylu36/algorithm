@@ -1,21 +1,23 @@
 public static void removeInvalidParentheses1(String s) {
-        Stack<Integer> left, right;
-        left = new Stack<>();
-        right = new Stack<>();
+        int[] index = new int[s.length()];
+        Stack<Integer> stack = new Stack<>();
+        List<Character> res = new ArrayList<>();
         for(int i = 0; i < s.length(); i ++) {
             if(s.charAt(i) == '(')
-                left.push(i);
-            else {
-                if(left.isEmpty())
-                    right.push(i);
-                else
-                    left.pop();
-            }
+                stack.push(i);
+            else if(s.charAt(i) == ')')
+                if(!stack.isEmpty()) {
+                    index[stack.pop()] = 1;
+                    index[i] = 1;
+                }
+            else
+                index[i] = 1;
         }
-        while(!left.isEmpty() || !right.isEmpty()) {
-            if(!left.isEmpty()) System.out.println(left.pop());
-            if(!right.isEmpty()) System.out.println(right.pop());
+        for(int i = 0; i < s.length(); i ++) {
+            if(index[i] == 1)
+                res.add(s.charAt(i));
         }
+        System.out.println(res);
     }
 
     public static String removeInvalidParentheses(String s) {
